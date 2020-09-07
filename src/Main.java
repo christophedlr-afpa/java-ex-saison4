@@ -19,7 +19,7 @@ public class Main {
 
             if (choice == 1) {
                 valid = true;
-                //m.algo47();
+                m.algo47();
             }
             else if (choice == 2) {
                 valid = true;
@@ -32,20 +32,93 @@ public class Main {
         }
     }
 
+    public void algo47() throws IOException {
+        boolean clientAccpeted  = true;
+        String  clientTarif     = "";
+
+        System.out.print("Quel est votre âge : ");
+        int clientAge = Integer.parseInt(reader.readLine());
+
+        System.out.print("Nombre d'années de votre permi : ");
+        int clientDLicense = Integer.parseInt(reader.readLine());
+
+        System.out.print("Nombre d'accidents : ");
+        int clientAccident = Integer.parseInt(reader.readLine());
+
+        System.out.print("Depuis combien de temps êtes-vous chez nous : ");
+        int clientSeniority = Integer.parseInt(reader.readLine());
+
+        if (clientAge <= 25) {
+            if (clientDLicense <= 2) {
+                clientTarif = "rouge";
+            } else if (clientDLicense > 2) {
+                if (clientAccident == 0) {
+                    clientTarif = "orange";
+                }
+                else if (clientAccident == 1) {
+                    clientTarif = "rouge";
+                }
+                else {
+                    System.out.println("On veut pas de vous ici, désolé !");
+                    clientAccpeted = false;
+                }
+            } else {
+                System.out.println("On veut pas de vous ici, désolé !");
+                clientAccpeted = false;
+            }
+        } else if (clientAge > 25) {
+            if (clientDLicense <= 2) {
+                if (clientAccident == 0) {
+                    clientTarif = "orange";
+                } else if (clientAccident == 1) {
+                    clientTarif ="rouge";
+                } else {
+                    System.out.println("On veut pas de vous ici, désolé !");
+                    clientAccpeted = false;
+                }
+            } else {
+                if (clientAccident == 0) {
+                    clientTarif = "vert";
+                } else if (clientAccident == 1) {
+                    clientTarif = "orange";
+                } else if (clientAccident == 2) {
+                    clientTarif = "rouge";
+                } else {
+                    System.out.println("On veut pas de vous ici, désolé !");
+                    clientAccpeted = false;
+                }
+            }
+        } else {
+            System.out.println("On veut pas de vous ici, désolé !");
+            clientAccpeted = false;
+        }
+
+        if (clientSeniority > 5) {
+            if (clientTarif == "rouge") {
+                clientTarif = "orange";
+            } else if (clientTarif == "orange") {
+                clientTarif = "vert";
+            } if (clientTarif == "vert") {
+                clientTarif = "bleu";
+            }
+        }
+
+        if (clientAccpeted) {
+            System.out.println("Votre tarif prévu est : "+clientTarif);
+        }
+    }
+
     public void algo48() throws IOException {
-        int     dateDay      = 0;
-        int     dateMonth    = 0;
-        int     dateYear     = 0;
         boolean dateLeapYear = false;
 
         System.out.print("Donner un numéro de jour : ");
-        dateDay = Integer.parseInt(reader.readLine());
+        int dateDay = Integer.parseInt(reader.readLine());
 
         System.out.print("Donner un numéro de mois : ");
-        dateMonth = Integer.parseInt(reader.readLine());
+        int dateMonth = Integer.parseInt(reader.readLine());
 
         System.out.print("Donner une année : ");
-        dateYear = Integer.parseInt(reader.readLine());
+        int dateYear = Integer.parseInt(reader.readLine());
 
         if (dateDay < 1 || dateDay > 31) {
             System.out.println("Date non valide");
