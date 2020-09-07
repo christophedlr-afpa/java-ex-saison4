@@ -1,0 +1,57 @@
+ALGORITHME ex-4.8
+
+VARIABLES
+dateDay = 0:        numérique
+dateMonth = 0:      numérique
+dateYear: = 0       numérique
+dateLeapYear = FAUX:   booléen
+
+DEBUT
+    Ecrire "Donner un numéro de jour : "
+    Lire dateDay
+
+    Ecrire "Donner un numéro de mois : "
+    Lire dateMonth
+
+    Ecrire "Donner une année : "
+    Lire dateYear
+
+    SI dateDay est inférieur à 1 ou supérieur à 31
+        Ecrire "Date non valide"
+    FIN SI
+
+    SI dateMonth est inférieur à 1 ou supérieur à 12
+        Ecrire "Date non valide"
+    FIN SI
+
+    SI dateYear%4 est égale à 0 ET dateYear%100 est différent de 0
+        dateLeapYear = VRAI
+    SINON SI dateYear%400 est égale à 0
+            dateLeapYear = VRAI
+    SINON
+        dateLeapYear = FAUX
+    FIN SI
+
+    SI dateMonth = 1 OU dateMonth = 3 OU dateMonth = 5 OU dateMonth = 7 OU dateMonth = 8 OU dateMonth = 10 OU dateMonth = 12
+        SI dateDay est inférieur ou égale à 31
+            Ecrire "Date valide"
+        FIN SI
+    SINON SI dateMonth = 4 OU dateMonth = 6 OU dateMonth = 9 ou dateMonth = 11
+        SI dateDay est égale à 31
+            Ecrire "Date non valide"
+        FIN SI
+    SINON SI dateMonth = 2
+        SI dateLeapYear est égale à VRAI
+            SI dateDay est inférieur ou égale à 29
+                Ecire "Date valide"
+            SINON
+                Ecrire "Date non valide"
+            FIN SI
+
+        SINON SI dateDay est supérieur à 28
+            Ecrire "Date non valide"
+        FIN SI
+    FIN SI
+FIN
+
+FIN ex-4.8
