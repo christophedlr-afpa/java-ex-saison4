@@ -1,0 +1,78 @@
+ALGORITHME ex-4.7
+
+VARIABLES
+clientAge: numérique
+clientDLicense: numérique
+clientSeniority: numérique
+clientAccident: numérique
+clientTarif: Chaîne
+clientAccepted: Booléen
+
+DEBUT
+    Ecrire "Quel est votre âge : "
+    Lire clientAge
+
+    Ecrire "Nombre d'années de votre permi : "
+    Lire clientDLicense
+
+    Ecrire "Nombre d'accidents : "
+    Lire clientAccident
+
+    Ecrire "Depuis combien de temps êtes-vous chez nous : "
+    Lire clientSeniority
+
+    SI clientAge est inférieur ou égale à 25
+        SI clientDLicense est inférieur ou égale à 2 ans
+            clientTarif = "rouge"
+        SINON SI clientDLicense est supérieur à 2 ans
+            SI clientAccident est égale à 0
+                clientTarif = "orange"
+            SINON SI clientAccident est égale à 1
+                clientTarif = "rouge"
+            SINON
+                Ecrire "On veut pas de vous ici, désolé !"
+                clientAccepted = FAUX
+        SINON
+            Ecrire "On veut pas de vous ici, désolé !"
+        FIN IS
+    SINON SI clientAge est supérieur à 25
+        SI clientDLicense est inférieur ou égale à 2 ans
+            SI clientAccident est égale à 0
+                clientTarif = "orange"
+            SINON SI clientAccident est égale à 1
+                clientTarif = "rouge"
+            SINON
+                Ecrire "On veut pas de vous ici, désolé !"
+                clientAccepted = FAUX
+            FIN SI
+        SINON
+            SI clientAccident est égale à 0
+                clientTarif = "vert"
+            SINON SI clientAccident est égale à 1
+                clientTarif = "orange"
+            SINON SI clientAccident est égale à 2
+                clientTarif = "rouge"
+            SINON
+                Ecrire "On veut pas de vous ici, désolé !"
+                clientAccepted = FAUX
+            FIN SI
+        FIN SI
+    SINON
+        Ecrire "On veut pas de vous ici, désolé !"
+        clientAccepted = FAUX
+    FIN SI
+
+    SI clientSeniority est supérieur à 5
+        SI clientTarif est égale à "rouge"
+            clientTarif = "orange"
+        SINON SI clientTarif est égale à "orange"
+            clientTarif = "vert"
+        SINON SI clientTarif est égale à "vert"
+            clientTarif = "bleu"
+        FIN SI
+    FIN SI
+
+    Ecrire "Votre tarif prévu est : "&clientTarif
+FIN
+
+FIN ex-4.7
